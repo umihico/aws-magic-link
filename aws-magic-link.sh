@@ -3,7 +3,12 @@ export AWS_PROFILE=default
 export AWS_DEFAULT_PROFILE=$AWS_PROFILE
 
 USERNAME=$(aws sts get-caller-identity --output text --query 'Arn' | awk -F/ '{print $NF}')
-TEMP_CRED=$(aws sts get-federation-token --name $USERNAME$(date +%s) --output text --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' | sed $'s/\t/ /g')
+TEMP_CRED=$(aws sts get-federation-token \
+    --name $USERNAME$(date +%s) \
+    --policy '{"Statement": [{"Effect": "Allow", "Action": "*", "Resource": "*"}]}' \
+    --output text \
+    --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' \
+    | sed $'s/\t/ /g')
 
 SIGNIN_TOKEN=$(curl -sG \
     --data-urlencode "Action=getSigninToken" \
