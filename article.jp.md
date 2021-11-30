@@ -36,3 +36,10 @@ AWS CLIが有効なシェル上でスクリプトを実行すると、最後に�
 また、ログインは発行元のIAMユーザーではなくフェデレーテッドユーザーになり、IAMまわりに制約もでます。他の使途も提示こそしましたが、マジックリンクの実現という観点ではネタの域を出ることは難しそうでした。
 
 個人的な学びはSSO系のログイン基盤の実装方法を知れたことと、aws-cliの`--output text --query`はカンマ区切りでキーを複数指定できて、タブ区切り出力できること、そしてターミナル上だとタブ区切りなのにシェル上の戻り値だとスペースに変換されるbashの挙動でした（今更すぎる）
+
+## 参考文献
+
+- https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html
+- https://dev.classmethod.jp/articles/aws-management-console-login-without-iam-password/
+- https://www.simpline.co.jp/recruit/blog/tech_ty/bash%E3%81%A7federated%E3%83%A6%E3%83%BC%E3%82%B6%E7%94%A8aws%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9url%E3%82%92%E7%94%9F%E6%88%90/
+- https://stackoverflow.com/questions/296536/how-to-urlencode-data-for-curl-command
